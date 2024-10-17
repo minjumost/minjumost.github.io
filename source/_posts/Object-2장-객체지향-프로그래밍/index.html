@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="최민주">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://minjumost.github.io/source/_posts/object-2장-객체지향-프로그래밍/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="협력, 객체, 클래스우리는 보통 프로그래밍을 할 때 가장 먼저 어떤 클래스가 필요한지 고민한다. 그리고 클래스에 어떤 속성과 메서드가 필요한지 고민한다.하지만 진정한 객체지향 패러다임으로의 전환은 클래스가 아닌 객체에 초점을 맞출 때에만 얻을 수 있다.따라서 우리는 프로그래밍을 하는 동안 두 가지에 집중해야한다. 1. 클래스가 아니라 어떤 객체들이 필요한지">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Object] 2장: 객체지향 프로그래밍">
+<meta property="og:url" content="https://minjumost.github.io/source/_posts/Object-2%EC%9E%A5-%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/index.html">
+<meta property="og:site_name" content="Minju&#39;s Blog">
+<meta property="og:description" content="협력, 객체, 클래스우리는 보통 프로그래밍을 할 때 가장 먼저 어떤 클래스가 필요한지 고민한다. 그리고 클래스에 어떤 속성과 메서드가 필요한지 고민한다.하지만 진정한 객체지향 패러다임으로의 전환은 클래스가 아닌 객체에 초점을 맞출 때에만 얻을 수 있다.따라서 우리는 프로그래밍을 하는 동안 두 가지에 집중해야한다. 1. 클래스가 아니라 어떤 객체들이 필요한지">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://minjumost.github.io/images/domain.png">
+<meta property="og:image" content="https://minjumost.github.io/images/class.png">
+<meta property="og:image" content="https://minjumost.github.io/images/Pasted%20image%2020241017144201.png">
+<meta property="og:image" content="https://minjumost.github.io/images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202024-10-17%20%EC%98%A4%ED%9B%84%207.35.06.png">
+<meta property="og:image" content="https://minjumost.github.io/images/Pasted%20image%2020241017173838.png">
+<meta property="og:image" content="https://minjumost.github.io/images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202024-10-17%20%EC%98%A4%ED%9B%84%207.42.34.png">
+<meta property="article:published_time" content="2024-10-17T13:04:06.000Z">
+<meta property="article:modified_time" content="2024-10-17T13:57:25.919Z">
+<meta property="article:author" content="Minju Choi">
+<meta property="article:tag" content="OOP">
+<meta property="article:tag" content="Object">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://minjumost.github.io/images/domain.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            [Object] 2장: 객체지향 프로그래밍 -
+        
+        minjuchoi
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"minjumost.github.io","root":"/","language":"ko","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.8,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"atom-one-light","dark":"atom-one-dark"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":false},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":"hello"},"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":false,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"hello my name is minju","subtitle":{"text":["a","b","c","d","e","fdfad","gsdaf","aef","aefa"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/minjumost/"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":false,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":100,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/09/06 00:00:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                minjuchoi
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/minjumost/">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/minjumost/">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">[Object] 2장: 객체지향 프로그래밍</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/kkom.png">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">최민주</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-10-17 22:04:06</span>
+        <span class="mobile">2024-10-17 22:04:06</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-10-17 22:57:25</span>
+            <span class="mobile">2024-10-17 22:57:25</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/OOP/">OOP</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/OOP/">OOP</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Object/">Object</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="협력-객체-클래스"><a href="#협력-객체-클래스" class="headerlink" title="협력, 객체, 클래스"></a>협력, 객체, 클래스</h2><p>우리는 보통 프로그래밍을 할 때 가장 먼저 어떤 <code>클래스</code>가 필요한지 고민한다. 그리고 클래스에 어떤 <code>속성</code>과 <code>메서드</code>가 필요한지 고민한다.<br>하지만 진정한 객체지향 패러다임으로의 전환은 클래스가 아닌 <strong>객체</strong>에 초점을 맞출 때에만 얻을 수 있다.<br>따라서 우리는 프로그래밍을 하는 동안 두 가지에 집중해야한다.</p>
+<p><em>1. 클래스가 아니라 어떤 객체들이 필요한지 고민하라.</em><br>클래스는 공통적인 상태와 행동을 공유하는 객체들을 추상화한 것이다. 따라서 클래스의 윤곽을 잡기 위해서는 어떤 객체들이 어떤 상태와 행동을 가지는지를 먼저 결정해야 한다. 객체를 중심에 두는 접근 방법은 설계를 단순하고 깔끔하게 만든다.</p>
+<p><em>2. 객체를 독립적인 존재가 아닌 기능을 구현하기 위해 협력하는 공동체의 일원으로 봐야한다.</em><br>훌륭한 협력이 훌륭한 객체를 낳고 훌륭한 객체가 훌륭한 클래스를 낳는다.</p>
+<h2 id="도메인의-구조를-따르는-프로그램-구조"><a href="#도메인의-구조를-따르는-프로그램-구조" class="headerlink" title="도메인의 구조를 따르는 프로그램 구조"></a>도메인의 구조를 따르는 프로그램 구조</h2><p>문제를 해결하기 위해 사용자가 프로그램을 사용하는 분야를 <code>도메인</code>이라고 한다.</p>
+<p>객체지향 패러다임이 강력한 이유는 요구사항과 프로그램을 객체라는 동일한 관점에서 바라볼 수 있기 때문이다.<br>따라서 도메인을 구성하는 개념들이 프로그램의 객체와 클래스로 매끄럽게 연결될 수 있다.<br>일반적으로 클래스의 이름은 대응되는 도메인 개념의 이름과 동일하거나 적어도 유사하게 지어야 한다.</p>
+<p><figure class="image-caption"><img lazyload="" src="/images/loading.svg" data-src="/../images/domain.png" alt="도메인을 구성하는 타입들의 구조"><figcaption>도메인을 구성하는 타입들의 구조</figcaption></figure><figure class="image-caption"><img lazyload="" src="/images/loading.svg" data-src="/../images/class.png" alt="도메인 개념의 구조를 따르는 클래스 구조"><figcaption>도메인 개념의 구조를 따르는 클래스 구조</figcaption></figure></p>
+<h2 id="클래스-구현하기"><a href="#클래스-구현하기" class="headerlink" title="클래스 구현하기"></a>클래스 구현하기</h2><p>상영 도메인을 구현하는 Screening클래스를 구현해보자.</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Screening</span>{</span><br><span class="line">	<span class="comment">// 상영하는 영화</span></span><br><span class="line">	<span class="keyword">private</span> Movie movie;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 하루에 몇번째로 상영하는지?</span></span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span> sequence;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 상영 시간</span></span><br><span class="line">	<span class="keyword">private</span> LocalDateTime whenScreened;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">Screening</span><span class="params">(Movie movie, <span class="type">int</span> sequence, LocalDateTime whenScreened)</span>{</span><br><span class="line">		<span class="built_in">this</span>.movie = movie;</span><br><span class="line">		<span class="built_in">this</span>.sequence = sequence;</span><br><span class="line">		<span class="built_in">this</span>.whenScreened = whenScreened;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> LocalDateTime <span class="title function_">getStartTime</span><span class="params">()</span>{</span><br><span class="line">		<span class="keyword">return</span> whenScreened;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSequence</span><span class="params">(<span class="type">int</span> sequence)</span>{</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">this</span>.sequence == sequence;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> Money <span class="title function_">getMovieFee</span><span class="params">()</span>{</span><br><span class="line">		<span class="keyword">return</span> movie.getFee();</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>위 코드를 보면 인스턴스 변수의 가시성은 <code>private</code>이고 ,메서드의 가시성은 <code>public</code>이다.<br>외부에서는 객체의 속성에 직접 접근할 수 없도록 막고, 적절한 public 메서드를 통해서만 내부 상태를 변경할 수 있게 해야 한다.<br>이와 같이 클래스의 내부와 외부를 구분해야 하는 이유는 경계의 명확성이</p>
+<ul>
+<li><code>객체의 자율성</code>을 보장하고,</li>
+<li><code>프로그래머에게 구현의 자유</code>를 제공하기 때문이다.</li>
+</ul>
+<h4 id="자율적인-객체"><a href="#자율적인-객체" class="headerlink" title="자율적인 객체"></a>자율적인 객체</h4><p>객체 내부에 대한 접근을 통제하는 이유는 객체를 자율적인 존재로 만들기 위해서다. 객체가 자율적인 존재로 우뚝 서기 위해서는 외부의 간섭을 최소화해야 한다. 외부에서 객체에게 원하는 것을 요청하면, 객체가 스스로 최선의 방법을 결정할 수 있을 것이라는 점을 믿고 기다려야 한다.</p>
+<p>데이터와 기능을 객체 내부로 함께 묶는 것을 <code>캡슐화</code>라고 한다.<br>그리고 캡슐화에서 한걸음 더 나아가 외부에서의 접근을 통제할 수 있게 하는 것이 <code>접근 제어</code>이다.<br>이를 통해 객체를 두 부분으로 나눌 수 있다.</p>
+<ul>
+<li>외부에서 접근 가능한 퍼블릭 인터페이스(interface)</li>
+<li>내부에서만 접근 가능한 구현(implementation)</li>
+</ul>
+<p>이것들은 객체지향 프로그래밍의 핵심 원칙인 인터페이스와 구현의 분리에서 중요한 역할을 한다.<br>프로그래밍 언어가 public이나 private 키워드를 제공한다면 클래스의 속성은 private로 선언해서 감추고 외부에 제공해야 하는 일부 메서드만 public으로 선언해야 한다.<br>이때 퍼블릭 인터페이스에는 public으로 지정된 메서드만 포함된다. 그 밖의 private, protected 메서드, 속성은 구현에 포함된다.</p>
+<h4 id="프로그래머의-자유"><a href="#프로그래머의-자유" class="headerlink" title="프로그래머의 자유"></a>프로그래머의 자유</h4><p>프로그래머의 역할을 클래스 작성자와 클라이언트 프로그래머로 구분하는 것이 유용하다.</p>
+<ul>
+<li>클래스 작성자<br>새로운 데이터 타입을 추가한다. 클래스 작성자는 클라이언트 프로그래머가 필요한 부분만 공개해야 한다. 이처럼 숨견놓은 부분에 접근할 수 없도록 방지하는 것을 <code>구현은닉</code>이라고 부른다.</li>
+<li>클라이언트 프로그래머<br>필요한 클래스들을 엮어서 애플리케이션을 빠르고 안정적으로 구축하는 것이다.</li>
+</ul>
+<p>접근제어 메커니즘을 통해 클래스의 내부와 외부를 명확하게 경계를 지어줌으로써, 클래스 작성자가 내부 구현을 은닉할 수 있게 해준다. 이렇게 하면 클라이언트 프로그래머가 실수로 숨겨진 부분에 접근하는 것을 막아준다.</p>
+<p>구현은닉을 통해 클라이언트 프로그래머는 내부의 구현을 무시한 채 인터페이스만 알고 있어도 클래스를 사용할 수 있다. 클래스 작성자는 인터페이스를 바꾸지 않는 한 내부 구현을 마음대로 변경할 수 있다.</p>
+<h2 id="협력하는-객체들의-공동체"><a href="#협력하는-객체들의-공동체" class="headerlink" title="협력하는 객체들의 공동체"></a>협력하는 객체들의 공동체</h2><p>Screening 클래스에 영화를 예매하는 기능을 넣어보자.<br>reserve메서드는 영화를 예매한 후 예매 정보를 담고 있는 Reservation의 인스턴스를 생성해서 반환한다.</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Screenning</span> {</span><br><span class="line">	<span class="comment">// ... 생략</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Reservation <span class="title function_">reserve</span><span class="params">(Customer customer, <span class="type">int</span> audienceCount)</span>{</span><br><span class="line">        <span class="keyword">return</span> Reservation(customer, <span class="built_in">this</span>, calculateFee(audienceCount), audienceCount);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Money <span class="title function_">calculateFee</span><span class="params">(<span class="type">int</span> audienceCount)</span> {</span><br><span class="line">        <span class="keyword">return</span> movie.calculateMovieFee(<span class="built_in">this</span>).times(audienceCount);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+<p>영화를 예매하기 위해 Screening, Movie, Reservation 인스턴스들은 서로의 메서드를 호출하며 상호작용한다. 이처럼 시스템의 어떤 기능을 구현하기 위해 객체들 사이에 이뤄지는 상호작용을 협력이라고 부른다.<br><img lazyload="" src="/images/loading.svg" data-src="/../images/Pasted%20image%2020241017144201.png"></p>
+<p>Money는 금액과 관련된 다양한 계산을 구현하는 클래스이다.</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Money</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Money</span> <span class="variable">ZERO</span> <span class="operator">=</span> Money.wons(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> amount;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Money</span><span class="params">(<span class="type">int</span> amount)</span> {</span><br><span class="line">        <span class="built_in">this</span>.amount = amount;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Money <span class="title function_">wons</span><span class="params">(<span class="type">int</span> amount)</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Money</span>(amount);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Money <span class="title function_">plus</span><span class="params">(Money amount)</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Money</span>(<span class="built_in">this</span>.amount + amount.amount);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Money <span class="title function_">minus</span><span class="params">(Money amount)</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Money</span>(<span class="built_in">this</span>.amount - amount.amount);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Money <span class="title function_">times</span><span class="params">(<span class="type">double</span> percent)</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Money</span>((<span class="type">int</span>) (<span class="built_in">this</span>.amount * (percent / <span class="number">100</span>)));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isLessThan</span><span class="params">(Money other)</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.amount &lt; other.amount;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isGreaterThanOrEqual</span><span class="params">(Money other)</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.amount &gt;= other.amount;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAmount</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> amount;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>Money를 단순 Long으로 표현하게 되면 저장하는 값이 금액과 관련돼 있다는 의미를 전달할 수는 없다. 또한 금액과 관련된 로직이 서로 다른 곳에 중복되어 구현되는것을 막을 수 없다.</p>
+<h3 id="Long-타입으로-처리할-경우"><a href="#Long-타입으로-처리할-경우" class="headerlink" title="Long 타입으로 처리할 경우"></a>Long 타입으로 처리할 경우</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TransactionA</span> {</span><br><span class="line">	<span class="keyword">public</span> <span class="type">long</span> <span class="title function_">add</span><span class="params">(<span class="type">long</span> amount1, <span class="type">long</span> amount2)</span> {</span><br><span class="line">		<span class="keyword">return</span> amount1 + amount2; <span class="comment">// 중복된 로직</span></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="type">long</span> <span class="title function_">subtract</span><span class="params">(<span class="type">long</span> amount1, <span class="type">long</span> amount2)</span> {</span><br><span class="line">		<span class="keyword">return</span> amount1 - amount2; <span class="comment">// 중복된 로직</span></span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TransactionB</span> {</span><br><span class="line">	<span class="keyword">public</span> <span class="type">long</span> <span class="title function_">add</span><span class="params">(<span class="type">long</span> amount1, <span class="type">long</span> amount2)</span> {</span><br><span class="line">		<span class="keyword">return</span> amount1 + amount2; <span class="comment">// 중복된 로직</span></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="type">long</span> <span class="title function_">subtract</span><span class="params">(<span class="type">long</span> amount1, <span class="type">long</span> amount2)</span> {</span><br><span class="line">		<span class="keyword">return</span> amount1 - amount2; <span class="comment">// 중복된 로직</span></span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Money-클래스를-사용하는-경우"><a href="#Money-클래스를-사용하는-경우" class="headerlink" title="Money 클래스를 사용하는 경우"></a>Money 클래스를 사용하는 경우</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TransactionA</span> {</span><br><span class="line">    <span class="keyword">public</span> Money <span class="title function_">add</span><span class="params">(Money amount1, Money amount2)</span> {</span><br><span class="line">        <span class="keyword">return</span> amount1.plus(amount2);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Money <span class="title function_">subtract</span><span class="params">(Money amount1, Money amount2)</span> {</span><br><span class="line">        <span class="keyword">return</span> amount1.minus(amount2);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TransactionB</span> {</span><br><span class="line">    <span class="keyword">public</span> Money <span class="title function_">add</span><span class="params">(Money amount1, Money amount2)</span> {</span><br><span class="line">        <span class="keyword">return</span> amount1.plus(amount2); <span class="comment">// 같은 로직이 아니라 Money 클래스 내에서 처리됨</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Money <span class="title function_">subtract</span><span class="params">(Money amount1, Money amount2)</span> {</span><br><span class="line">        <span class="keyword">return</span> amount1.minus(amount2); <span class="comment">// 같은 로직이 아니라 Money 클래스 내에서 처리됨</span></span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>객체는 다른 객체의 인터페이스에 공개된 행동을 수행하도록 <code>요청</code>할 수 있다.<br>요청을 받은 객체는 자율적인 방법에 따라 요청을 처리한 후 <code>응답</code>한다.</p>
+<p>객체끼리 상호작용 할 수 있는 유일한 방법은 <code>메시지</code>를 전송하는 것 뿐이다.<br>수신된 메시지를 처리하기 위한 자신만의 방법을 <code>메서드</code> 라고한다.</p>
+<p>메시지와 메서드를 구분하는 것에서 다형성의 개념이 출발한다.</p>
+<p>Screening이 Movie의 calculateMovieFee 메서드를 호출한다는 표현보다, calculateMovieFee 메시지를 전송한다는 표현이 더 적절하다.<br>사실 Screening은 Movie 안에 calculateMovieFee 메서드의 존재도 알지 못한다.<br>메시지에 응답할 수 있다고 믿고 메시지를 전송할 뿐이다.</p>
+<h3 id="할인-요금-구하기"><a href="#할인-요금-구하기" class="headerlink" title="할인 요금 구하기"></a>할인 요금 구하기</h3><p>Movie 클래스를 구현해보자.</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Movie</span> {</span><br><span class="line">	<span class="keyword">private</span> String title;</span><br><span class="line">	<span class="keyword">private</span> Duration runningTime;</span><br><span class="line">    <span class="keyword">private</span> Money fee;</span><br><span class="line">    <span class="keyword">private</span> DiscountPolicy discountpolicy</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Movie</span><span class="params">(String title, Duration runningTime, Money fee, DiscountPolicy discountPolicy)</span>{</span><br><span class="line">	    <span class="built_in">this</span>.title = title;</span><br><span class="line">	    <span class="built_in">this</span>.runningTime = runningTime;</span><br><span class="line">	    <span class="built_in">this</span>.fee = fee;</span><br><span class="line">	    <span class="built_in">this</span>.discountPolicy = discountPolicy;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> Money <span class="title function_">getFee</span><span class="params">()</span>{</span><br><span class="line">		<span class="keyword">return</span> fee;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Money <span class="title function_">calculateMovieFee</span><span class="params">(Screening screnning)</span> {</span><br><span class="line">        <span class="keyword">return</span> fee.minus(discountPolicy.calculateDiscountAmount(screening));</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+<p>이 메서드 안에는 이상한 점이 있다. 어떤 할인 정책을 사용할 것인지 결정하는 코드가 어디에도 존재하지 않는다는 것이다. 단지 discountPolicy에게 메시지를 전송할 뿐이다.</p>
+<h4 id="할인-정책"><a href="#할인-정책" class="headerlink" title="할인 정책"></a>할인 정책</h4><p>할인 정책은 금액 할인 정책과 비율 할인 정책으로 구분된다. 두 가지 할인 정책을 각각 AmountDiscountPolicy와 PercentDiscountPolicy라는 클래스로 구현할 것이다.</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">DiscountPolicy</span> {</span><br><span class="line">    <span class="keyword">private</span> List&lt;DiscountCondition&gt; conditions = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">DiscountPolicy</span><span class="params">(DiscountCondition ... conditions)</span> {</span><br><span class="line">        <span class="built_in">this</span>.conditions = Arrays.asList(conditions);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Monet <span class="title function_">calculateDiscountAmount</span><span class="params">(Screening screening)</span> {</span><br><span class="line">        <span class="keyword">for</span>(DiscountCondition each : conditions) {</span><br><span class="line">            <span class="keyword">if</span> (each.isSatisfiedBy(screening)) {</span><br><span class="line">                <span class="keyword">return</span> getDiscountAmount(screening);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> Money.ZERO;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">protected</span> Money <span class="title function_">getDiscountAmount</span><span class="params">(Screeing screening)</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AmountDiscountPolicy</span> <span class="keyword">extends</span> <span class="title class_">DiscountPolicy</span> {</span><br><span class="line">    <span class="keyword">private</span> Money discountAmount;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">AmountDiscountPolicy</span><span class="params">(Money discountAmount, DiscountCondition[] conditions)</span> {</span><br><span class="line">        <span class="built_in">super</span>(conditions);</span><br><span class="line">        <span class="built_in">this</span>.discountAmount = discountAmount;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Money <span class="title function_">getDiscountAmount</span><span class="params">(Screening screening)</span> {</span><br><span class="line">        <span class="keyword">return</span> discountAmount;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PercentDiscountPolicy</span> <span class="keyword">extends</span> <span class="title class_">DiscountPolicy</span> {</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> percent;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">PercentDiscountPolicy</span><span class="params">(<span class="type">double</span> percent, DiscountCondition[] conditions)</span> {</span><br><span class="line">        <span class="built_in">super</span>(conditions);</span><br><span class="line">        <span class="built_in">this</span>.percent = percent;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Money <span class="title function_">getDiscountAmount</span><span class="params">(Screening screening)</span> {</span><br><span class="line">        <span class="keyword">return</span> screening.getMovieFee().times(percent);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>여기서는 부모클래스인 DiscountPolicy안에 중복 코드를 두고 두 클래스가 이 클래스를 상속받게 할 것이다.<br>할인 여부와 요금 계산에 필요한 전체적인 흐름은 정의하지만, 실제로 요금을 계산하는 부분은 추상 메서드에게 위임한다. 실제로는 DiscountPolicy를 상속받은 자식 클래스에서 오버라이딩한 메서드가 실행될 것이다.<br>이처럼 부모클래스에 기본적인 흐름을 구현하고, 중간에 필요한 처리를 자식 클래스에게 위임하는 디자인 패턴을 <code>TEMPLATE METHOD</code>패턴이라고 한다.</p>
+<h4 id="할인-조건"><a href="#할인-조건" class="headerlink" title="할인 조건"></a>할인 조건</h4><p>할인 조건에는 순번 조건과 기간 조건의 두 가지 할인 조건이 존재한다. 두 가지 할인 조건은 각각 SequeneceCondition과 PeriodCondition이라는 클래스로 구현될 것이다.</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">DiscountCondition</span> {</span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">isSatisfiedBy</span><span class="params">(Screening screening)</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SequenceCondition</span> <span class="keyword">implements</span> <span class="title class_">DiscountCondition</span> {</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> sequence; <span class="comment">// 할인 여부를 판단하기 위해 사용할 순번</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SequenceCondition</span><span class="params">(<span class="type">int</span> sequence)</span> {</span><br><span class="line">        <span class="built_in">this</span>.sequence = sequence;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSatisfiedBy</span><span class="params">(Screening screening)</span> {</span><br><span class="line">        <span class="keyword">return</span> screening.isSequence(<span class="built_in">this</span>.sequence); <span class="comment">// 상영 순번과 일치할 경우 true</span></span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PeriodCondition</span> <span class="keyword">implements</span> <span class="title class_">DiscountCondition</span> {</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> dayOfWeek; <span class="comment">// 요일</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> startTime; <span class="comment">// 시작 시간</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> endTime; <span class="comment">// 종료 시간</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">PeriodCondition</span><span class="params">(<span class="type">int</span> dayOfWeek, <span class="type">int</span> startTime, <span class="type">int</span> endTime)</span> {</span><br><span class="line">        <span class="built_in">this</span>.dayOfWeek = dayOfWeek;</span><br><span class="line">        <span class="built_in">this</span>.startTime = startTime;</span><br><span class="line">        <span class="built_in">this</span>.endTime = endTime;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSatisfiedBy</span><span class="params">(Screening screening)</span> {</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            <span class="comment">// 상영 요일이 같고 시작 시간이 startTime과 endTime 사이에 있을 경우 true</span></span><br><span class="line">            screening.getStartTime() == <span class="built_in">this</span>.dayOfWeek &amp;&amp;</span><br><span class="line">            <span class="built_in">this</span>.startTime &lt;= screening.getStartTime() &amp;&amp;</span><br><span class="line">            <span class="built_in">this</span>.endTime &gt;= screening.getStartTime()</span><br><span class="line">        );</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="상속과-다형성"><a href="#상속과-다형성" class="headerlink" title="상속과 다형성"></a>상속과 다형성</h2><p>다시 한번 Movie 클래스를 살펴보자.</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Movie</span> {</span><br><span class="line">	<span class="keyword">private</span> String title;</span><br><span class="line">	<span class="keyword">private</span> Duration runningTime;</span><br><span class="line">    <span class="keyword">private</span> Money fee;</span><br><span class="line">    <span class="keyword">private</span> DiscountPolicy discountpolicy</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Movie</span><span class="params">(String title, Duration runningTime, Money fee, DiscountPolicy discountPolicy)</span>{</span><br><span class="line">	    <span class="built_in">this</span>.title = title;</span><br><span class="line">	    <span class="built_in">this</span>.runningTime = runningTime;</span><br><span class="line">	    <span class="built_in">this</span>.fee = fee;</span><br><span class="line">	    <span class="built_in">this</span>.discountPolicy = discountPolicy;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> Money <span class="title function_">getFee</span><span class="params">()</span>{</span><br><span class="line">		<span class="keyword">return</span> fee;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Money <span class="title function_">calculateMovieFee</span><span class="params">(Screening screnning)</span> {</span><br><span class="line">        <span class="keyword">return</span> fee.minus(discountPolicy.calculateDiscountAmount(screening));</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+<p>영화의 할인 정책을 금액과 비율 중에 어떤걸로 할건지 결정하려면 둘 중에 하나에 연결돼있어야 한다. 즉 Movie클래스는 AmountDiscountPolicy클래스나, PercentDiscountPolicy 중 하나에 의존해야한다. 그러나 caculateMovieFee 메서드를 살펴보면 두 자식 클래스 대신 부모클래스에 의존하는 것을 볼 수 있다.</p>
+<p>그렇다면 어떻게 할인 정책을 결정할 수 있을까?<br>바로 Movie의 인스턴스를 생성할때 생성자의 인자로 자식클래스를 전달하면 된다.</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Movie</span>(<span class="string">"해리포터"</span>, Duration.ofMinutes(<span class="number">120</span>), Money.wons(<span class="number">10000</span>), <span class="keyword">new</span> <span class="title class_">AmountDiscountPolicy</span>(Money.wons(<span class="number">800</span>), ...));</span><br></pre></td></tr></table></figure></div>
+
+<p>이 코드에서 생성된 Movie 인스턴스는 결국 AmountDiscountPolicy 클래스 인스턴스에 의존하게 될 것이다.<br>결국에 Movie클래스의 할인 정책은 실행 시점에 인스턴스가 생성되며 결정된다.</p>
+<p>여기서 핵심은 코드의 의존성과 실행시점의 의존성이 서로 다를 수 있다는 점이다.<br>(= 클래스 사이의 의존성과 객체 사이의 의존성은 동일하지 않을 수 있다.)<br>코드의 의존성과 실행 시점의 의존성이 다를 수록 코드를 이해하고 디버깅하기는 어려워진다.<br>반대로 유연하지 않을 수록 코드를 이해하고 디버깅하기는 쉬워지지만, 재사용성과 확장 가능성은 낮아진다.<br>따라서 코드의 의존성과 실행시점의 의존성이 다를 수록 설계가 유연해진다.<br>이와 같은 특징은 객체지향 설계가 트레이드 오프의 산물이라는 사실을 잘 보여준다.</p>
+<p>훌륭한 객체지향 설계자로 성장하기 위해서는 항상 유연성과 가독성 사이에서 고민해야한다.</p>
+<h2 id="상속과-인터페이스"><a href="#상속과-인터페이스" class="headerlink" title="상속과 인터페이스"></a>상속과 인터페이스</h2><p>인터페이스는 객체가 이해할 수 있는 메시지의 목록을 정의한다는 것을 기억하자.<br>상속을 통해 자식은 부모 클래스가 수신할 수 있는 모든 메시지를 수신할 수 있기 때문에 외부 객체는 자식 클래스를 부모 클래스와 동일한 타입으로 간주할 수 있다.</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Movie</span>{</span><br><span class="line">	<span class="keyword">public</span> Money <span class="title function_">caculateMovieFee</span><span class="params">(Screening screening)</span>{</span><br><span class="line">		<span class="keyword">return</span> fee.minus(discountPolicy.calculateDiscountAmount(screening));</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+<p>Movie는 DiscountPolicy의 인터페이스에 정의된 calculateDiscountAmount라는 메시지를 전송하고 있다. DiscountPolicy를 상속받은 AmountDiscountPolicy, PercentDiscountPolicy의 인터페이스에도 이 메서드가 포함되어 있다.</p>
+<p>Movie입장에서는 자신과 협력하는 객체가 어떤 클래스의 인스턴스인지가 중요한 것이 아니라, calculateDiscountAmount라는 메시지를 수신할 수 있다는 사실이 중요하다.</p>
+<h2 id="다형성"><a href="#다형성" class="headerlink" title="다형성"></a>다형성</h2><p>메시지와 메서드는 다른 개념이다.<br>Movie는 discountPolicy의 인스턴스에게 calculateDiscountPolicy 메시지를 전송한다.<br>그럼 실행되는 메서드는 무엇인가? 이는 연결된 객체의 클래스가 무엇인지에 따라 달라진다.</p>
+<p>다시 말해, Movie는 동일한 메시지를 전송하지만 실제로 어떤 메서드가 실행될 것 인가?는 메시지를 수신하는 객체의 클래스가 무엇이냐에 따라 달라진다. 이를 다형성이라 부른다.</p>
+<p>이처럼 메시지와 메서드를 실행 시점에 바인딩 하는것을 지연바인딩 혹은 동적 바인딩이라고 부른다.</p>
+<h2 id="추상화와-유연성"><a href="#추상화와-유연성" class="headerlink" title="추상화와 유연성"></a>추상화와 유연성</h2><h3 id="추상화의-힘"><a href="#추상화의-힘" class="headerlink" title="추상화의 힘"></a>추상화의 힘</h3><p>DiscountPolicy는 AmountDiscountPolicy, PercentDiscountPolicy 보다 더 추상적이고,<br>DiscountCondition은 SequenceCondition, PeriodCondition보다 더 추상적이다.<br><img lazyload="" src="/images/loading.svg" data-src="/../images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202024-10-17%20%EC%98%A4%ED%9B%84%207.35.06.png"><br>이는 인터페이스에 초점을 맞추기 때문이다.<br>DiscountPolicy는 모든 할인 정책이 수신할 수 있는 calculateDiscountAmount메시지를 정의한다.<br>DiscountCondition은 모든 할인 조건들이 수신할 수 있는 isSatisfiedBy 메시지를 정의한다.</p>
+<p>이처럼 추상화를 사용할 경우 2가지의 장점이 있다.</p>
+<ol>
+<li>추상화의 계층만 따로 떼어 놓고 보면 요구사항의 정책을 높은 수준에서 서술할 수 있다.</li>
+<li>추상화를 이용하면 설계가 좀 더 유연해진다. 구체적인 상황에 결합되지 않기 때문이다.</li>
+</ol>
+<p>위 다이어그램을 하나의 문장으로 정리하면,<br>“영화 에매 요금은 최대 하나의 할인 정책과 다수의 할인 조건을 이용해 계산할 수 있다.”와 같다.<br>위 문장은 “금액 할인 정책과 다수의 할인 조건을 이용해 계산할 수 있다.”와 같다.<br>위 문장은 “금액 할인 정책과 두 개의 순서 조건, 한 개의 기간 조건을 이용해 계산할 수 있다”라는 문장을 포괄할 수 있다는 사실이 중요하다.</p>
+<p>추상화를 통해 상위 정책을 기술한다는 것은 기본적인 애플리케이션의 협력 흐름을 기술하다는 것을 의미한다.<br>영화 예매 가격을 계산하기 위한 흐름은 항상 Movie -&gt; DiscountPolicy -&gt; DiscountCondition 순서로 흘러간다.<br>할인 정책, 조건의 자식들은 추상화를 이용해서 흐름에 그대로 따르게 된다.</p>
+<p>추상화가 유연한 설계를 가능하게 하는 이유는 설계가 구체적인 상황에 결합되는 것을 방지하기 때문이다.<br>Movie는 특정한 할인 정책에 묶이지 않는다. 할인 정책을 구현한 클래스가 DiscountPolicy를 상속받고 있다면 어떤 클래스와도 협력이 가능하다.<br>DiscountPolicy 역시 특정 할인 조건에 묶여있지 않다. DiscountCondition을 상속받은 어떤 클래스와도 협력이 가능하다.</p>
+<p>이 모든 것이 추상화 덕분이다.</p>
+<h3 id="유연한-설계"><a href="#유연한-설계" class="headerlink" title="유연한 설계"></a>유연한 설계</h3><p>할인 정책이 적용돼 있지 않은 영화의 경우, 예외 케이스로 취급되기 때문에 일관성 있던 협력 방식이 무너지게 된다.</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Movie</span>{</span><br><span class="line">	<span class="keyword">public</span> Money <span class="title function_">calculateMovieFee</span><span class="params">(Screening screnning)</span> {</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">this</span>.discountPolicy == <span class="literal">null</span>){</span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">this</span>.fee;</span><br><span class="line">		}</span><br><span class="line">        <span class="keyword">return</span> fee.minus(discountPolicy.calculateDiscountAmount(screening));</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+<p>할인 정책이 있는 경우에는, 할인 금액을 계산하는 책임이 discountPolicy의 자식 클래스에 있지만<br>할인 정책이 없는 경우, 할인 금액을 0원으로 결정하는 책임이 Moive에 있게 된다.<br>하지만 책임의 위치를 결정하기 위해 조건문을 사용하는 것은 협력의 설계 측면에서 좋지 않다.</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">DiscountPolicy</span> {</span><br><span class="line">    <span class="keyword">private</span> List&lt;DiscountCondition&gt; conditions = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">DiscountPolicy</span><span class="params">(DiscountCondition ... conditions)</span> {</span><br><span class="line">        <span class="built_in">this</span>.conditions = Arrays.asList(conditions);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Money <span class="title function_">calculateDiscountAmount</span><span class="params">(Screening screening)</span> {</span><br><span class="line">        <span class="keyword">for</span>(DiscountCondition each : conditions) {</span><br><span class="line">            <span class="keyword">if</span> (each.isSatisfiedBy(screening)) {</span><br><span class="line">                <span class="keyword">return</span> getDiscountAmount(screening);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> Money.ZERO;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">protected</span> Money <span class="title function_">getDiscountAmount</span><span class="params">(Screeing screening)</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+<p>조건문을 사용하지 않기 위해(책임 있는 객체를 만들기 위해) NoneDiscountPolicy 클래스를 추가해보자.</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NoneDiscountPolicy</span> <span class="keyword">extends</span> <span class="title class_">DiscountPolicy</span>{</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">protected</span> Money <span class="title function_">getDiscountAmount</span><span class="params">(Screening screening)</span>{</span><br><span class="line">		<span class="keyword">return</span> Money.ZERO;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+<p>위 코드를 보면, NoneDiscountPolicy는 getDiscountAmount()를 오버라이딩하여 ZERO를 반환하도록 하고있다. 하지만 할인 조건이 없는 경우, calculateDiscountAmount 메시지 호출시 getDiscountAmount()자체를 호출하지 않는다.</p>
+<p>부모 클래스인 DiscountPolicy는 할인 조건이 없는 경우 getDiscountAmount()를 호출하지 않고, ZERO를 반환한다. 이는 DiscountPolicy내부에 NoneDiscountPolicy를 개념적으로 결합시켜둔 것이다. 개발자는 DiscountCondition이 없으면 0원을 반환할 것이라는 사실을 가정하기 때문이다.</p>
+<p>이러한 문제를 해결하기 위해 DiscountPolicy를 인터페이스로 바꾸고, 기존의 DiscountPolicy를 DefaultDiscountPolicy라는 abstract class로 만든다.<br><img lazyload="" src="/images/loading.svg" data-src="/../images/Pasted%20image%2020241017173838.png"></p>
+<p>과연 어떤 설계가 더 좋은가? 구현과 관련된 모든 것들이 트레이드 오프의 대상이 될 수 있다.<br>우리가 작성하는 코드는 모두 합당한 이유가 있어야 한다. 비록 아주 사소하더라도 트레이드오프를 통해 얻어진 결론은 그렇지 않은 경우와 매우 다르다.</p>
+<h2 id="코드-재사용"><a href="#코드-재사용" class="headerlink" title="코드 재사용"></a>코드 재사용</h2><p>상속은 코드를 재사용하기 위해 널리 사용되는 방법이다.<br>그러나 코드 재사용을 위해서는 상속보다는 합성이 더 좋은 방법이다.<br>합성이란 다른 객체의 인스턴스를 자신의 인스턴스 변수로 포함해서 재사용하는 방법을 말한다.</p>
+<p>다음은 합성방식을 상속으로 변경한 다이어그램이다.<br><img lazyload="" src="/images/loading.svg" data-src="/../images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202024-10-17%20%EC%98%A4%ED%9B%84%207.42.34.png"></p>
+<p>상속의 방식은 두 가지 단점을 가져온다.</p>
+<ol>
+<li>캡슐화 위반<br>부모 클래스의 구현이 자식 클래스에게 노출되기 때문에 캡슐화가 약화된다.</li>
+<li>유연하지 못한 설계<br>상속은 부모 클래스와 자식 클래스 사이의 관계를 컴파일 시점에 결정한다.<br>따라서 실행 시점에 객체의 종류를 변경하는 것은 불가능하다.</li>
+</ol>
+<p>반대로 합성의 방식은</p>
+<ul>
+<li>Movie가 DiscountPolicy의 코드를 재사용하고</li>
+<li>DiscountPolicy의 인터페이스를 통해 약하게 결합된다.</li>
+</ul>
+<p>합성은 상속이 가지는 두 가지 문제점을 모두 해결한다.<br>또한 합성은 인터페이스에 정의된 메시지를 통해서만 재사용이 가능하기 때문에 캡슐화가 가능하며, 의존하는 인스턴스가 쉽게 교체 될 수 있기 때문에 설계가 유연해진다.</p>
+<p>그렇다고 상속을 무조건 사용하지 말라는 것은 아니다. 상속과 합성을 적절히 섞어서 사용할 수 있어야 한다. 위 예제에서는 Movie와 DiscountPolicy가 합성관계이지만 AmountDiscountPolicy와 PercentDiscountPolicy는 상속관계로 되어있다.</p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/OOP/">#OOP</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Object/">#Object</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/source/_posts/BOJ-1010%EB%B2%88-%EB%8B%A4%EB%A6%AC%EB%86%93%EA%B8%B0-Java/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">[BOJ] 1010번: 다리놓기 (Java)</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="giscus-container"></div>
+    <script data-swup-reload-script defer>
+        async function loadGiscus() {
+            const giscusConfig = {
+                'src': 'https://giscus.app/client.js',
+                'data-repo': 'minjumost/minjumost.github.io',
+                'data-repo-id': 'R_kgDOMrLCBg',
+                'data-category': 'Comments',
+                'data-category-id': 'DIC_kwDOMrLCBs4CiPXp',
+                'data-mapping': 'pathname',
+                'data-strict': '0',
+                'data-reactions-enabled': '1',
+                'data-emit-metadata': '1',
+                'data-theme': 'preferred_color_scheme',
+                'data-lang': 'ko',
+                'data-input-position': 'bottom',
+                'data-loading': 'lazy',
+                'crossorigin': 'anonymous',
+                'async': true
+            }
+            const giscusScript = document.createElement('script');
+            for (const key in giscusConfig) {
+                giscusScript.setAttribute(key, giscusConfig[key]);
+            }
+            document.getElementById('giscus-container').appendChild(giscusScript);
+        }
+        if ('true') {
+            let loadGiscusTimeout = setTimeout(() => {
+                loadGiscus();
+                clearTimeout(loadGiscusTimeout);
+            }, 1000);
+        } else {
+            document.addEventListener('DOMContentLoaded', loadGiscus);
+        }
+    </script>
+
+
+        
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">[Object] 2장: 객체지향 프로그래밍</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%98%91%EB%A0%A5-%EA%B0%9D%EC%B2%B4-%ED%81%B4%EB%9E%98%EC%8A%A4"><span class="nav-text">협력, 객체, 클래스</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%8F%84%EB%A9%94%EC%9D%B8%EC%9D%98-%EA%B5%AC%EC%A1%B0%EB%A5%BC-%EB%94%B0%EB%A5%B4%EB%8A%94-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EA%B5%AC%EC%A1%B0"><span class="nav-text">도메인의 구조를 따르는 프로그램 구조</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%81%B4%EB%9E%98%EC%8A%A4-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0"><span class="nav-text">클래스 구현하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%98%91%EB%A0%A5%ED%95%98%EB%8A%94-%EA%B0%9D%EC%B2%B4%EB%93%A4%EC%9D%98-%EA%B3%B5%EB%8F%99%EC%B2%B4"><span class="nav-text">협력하는 객체들의 공동체</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Long-%ED%83%80%EC%9E%85%EC%9C%BC%EB%A1%9C-%EC%B2%98%EB%A6%AC%ED%95%A0-%EA%B2%BD%EC%9A%B0"><span class="nav-text">Long 타입으로 처리할 경우</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Money-%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EA%B2%BD%EC%9A%B0"><span class="nav-text">Money 클래스를 사용하는 경우</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%95%A0%EC%9D%B8-%EC%9A%94%EA%B8%88-%EA%B5%AC%ED%95%98%EA%B8%B0"><span class="nav-text">할인 요금 구하기</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%83%81%EC%86%8D%EA%B3%BC-%EB%8B%A4%ED%98%95%EC%84%B1"><span class="nav-text">상속과 다형성</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%83%81%EC%86%8D%EA%B3%BC-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4"><span class="nav-text">상속과 인터페이스</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%8B%A4%ED%98%95%EC%84%B1"><span class="nav-text">다형성</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%B6%94%EC%83%81%ED%99%94%EC%99%80-%EC%9C%A0%EC%97%B0%EC%84%B1"><span class="nav-text">추상화와 유연성</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%B6%94%EC%83%81%ED%99%94%EC%9D%98-%ED%9E%98"><span class="nav-text">추상화의 힘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%9C%A0%EC%97%B0%ED%95%9C-%EC%84%A4%EA%B3%84"><span class="nav-text">유연한 설계</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%BD%94%EB%93%9C-%EC%9E%AC%EC%82%AC%EC%9A%A9"><span class="nav-text">코드 재사용</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2024</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">최민주</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        2 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.7.1</a></span>
+        </div>
+        
+        
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="fa-regular fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/libs/anime.min.js"></script>
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>
